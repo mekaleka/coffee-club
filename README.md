@@ -14,5 +14,3 @@ An online coffee community!
 ## Michael Plichta
 ## Cameron Crawford
 ## John Telban
-
-
