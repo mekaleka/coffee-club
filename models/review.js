@@ -1,9 +1,15 @@
 module.exports = function(sequelize, DataTypes) {
   var Review = sequelize.define("Review", {
-    body: {
-      type: DataTypes.TEXT,
+    comment: {
+      type: DataTypes.TE,
+      allowNull: false
+    },
+    rating: {
+      type: DataTypes.INT,
       allowNull: false
     }
+
+
   });
 
   Review.associate = function(models) {
