@@ -17,9 +17,9 @@ app.get("/profile", function (req, res) {
     res.render("user-profile");
 })
 
-app.get("/user/:id", function (req, res) {
+app.get("/user/", function (req, res) {
 
-    res.render("user")
+    res.render("view-user")
 })
 
 
