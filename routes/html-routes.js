@@ -8,43 +8,39 @@ module.exports = function(app) {
 
   app.get("/coffeehouse", function(req, res) {
     db.CoffeeHouse.findAll().then(function(data) {
-      var coffeeHousObject = {
-        coffeehouse: data
-      };
-      console.log(coffeeHouseObject);
-      res.render("coffeehouse", coffeeHouseObject);
+      res.render("coffeehouse", {
+        coffeehouse: data.map(item => item.toJSON())
+      });
     });
   });
 
-  app.get("/profile:id", function(req, res) {
+  app.get("/profile/:id", function(req, res) {
     db.User.findOne({
-        where: {
-            id: req.params.id
-        }
-    }).then(function (dbUser) {
-        const userObj ={
-            user: dbUser
-        }
-        console.log(userObj);
-        res.render("user-profile", userObj);
-    })
-
+      where: {
+        id: req.params.id
+      }
+    }).then(function(dbUser) {
+      const userObj = {
+        user: dbUser
+      };
+      console.log(userObj);
+      res.render("user-profile", userObj);
+    });
 
     res.render("user-profile");
   });
 
   app.get("/user/:id", function(req, res) {
     db.Reviews.findAll({
-        where: {
-          UserId = req.params.userid
-        }
-      }).then(function(dbReviews) {
-
-       const urObject = {
-           userReviews: dbReviews
-       };
-       console.log(urObject);
-       res.render("view-user");
-      })
+      where: {
+        UserId: req.params.userid
+      }
+    }).then(function(dbReviews) {
+      const urObject = {
+        userReviews: dbReviews
+      };
+      console.log(urObject);
+      res.render("view-user");
+    });
   });
 };
