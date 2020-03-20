@@ -50,6 +50,7 @@ module.exports = function(app) {
       });
     }
   });
+
   app.post("/api/review", function(req, res) {
     console.log(req.body);
     db.Review.create({
@@ -57,8 +58,41 @@ module.exports = function(app) {
       rating: req.body.rating,
       CoffeeHouseId: req.body.CoffeeHouseId,
       UserId: req.body.UserId
-    }).then(newUser => {
-      res.json(newUser);
+    }).then(newReview => {
+      res.json(newReview);
     });
   });
+
+  app.get("/api/coffehouse", function (req, res) {
+    db.CoffeeHouse.findAll().then(function(dbCoffeehous) {
+      res.json(dbCoffeHouse);
+    });
+  });
+
+  
+  app.get("api/coffehouse/:chid", function (req, res) {
+ 
+    db.Reviews.findAll({
+      where: {
+        CoffeeHouseId = req.params.chid
+      }
+    }).then(function(dbReviews) {
+      res.json(dbReviews);
+    })
+
+  })
+
+  app.get("api/user/:userid", function (req, res) {
+ 
+    db.Reviews.findAll({
+      where: {
+        UserId = req.params.userid
+      }
+    }).then(function(dbReviews) {
+      res.json(dbReviews);
+    })
+
+  })
+
+
 };
