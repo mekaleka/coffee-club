@@ -7,13 +7,7 @@ module.exports = function(sequelize, DataTypes) {
     rating: {
       type: DataTypes.INTEGER,
       allowNull: false
-    },
-  
-
-
-
-
-
+    }
   });
 
   Review.associate = function(models) {
