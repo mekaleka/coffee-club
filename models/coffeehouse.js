@@ -11,8 +11,7 @@ module.exports = function(sequelize, DataTypes) {
     address: {
       type: DataTypes.STRING,
       allowNull: false
-    },
-    
+    }
   });
 
   CoffeeHouse.associate = function(models) {

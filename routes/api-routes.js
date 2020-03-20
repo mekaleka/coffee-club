@@ -50,18 +50,15 @@ module.exports = function(app) {
       });
     }
   });
-  app.post('/api/review', function(req, res){
-    console.log(req.body)
+  app.post("/api/review", function(req, res) {
+    console.log(req.body);
     db.Review.create({
-      comment:req.body.comment,
+      comment: req.body.comment,
       rating: req.body.rating,
-      CoffeeHouseId:req.body.CoffeeHouseId,
-      UserId:req.body.UserId
-    }).then(newUser=>{
+      CoffeeHouseId: req.body.CoffeeHouseId,
+      UserId: req.body.UserId
+    }).then(newUser => {
       res.json(newUser);
-    })
+    });
   });
-
-
-  
 };
