@@ -1,13 +1,17 @@
 module.exports = function(sequelize, DataTypes) {
   var Review = sequelize.define("Review", {
     comment: {
-      type: DataTypes.TE,
+      type: DataTypes.STRING,
       allowNull: false
     },
     rating: {
-      type: DataTypes.INT,
+      type: DataTypes.INTEGER,
       allowNull: false
-    }
+    },
+  
+
+
+
 
 
   });

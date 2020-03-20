@@ -12,10 +12,7 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false
     },
-    comments: {
-      type: DataTypes.STRING,
-      allowNull: false
-    }
+    
   });
 
   CoffeeHouse.associate = function(models) {
