@@ -1,3 +1,25 @@
 var isAuthenticated = require("../config/middleware/isAuthenticated");
 
-module.exports = function(app) {};
+module.exports = function(app) {
+
+
+app.get("/", function (req, res) {
+    res.render("index")
+});
+
+
+app.get("/coffeehouse", function (req, res) {
+    res.render("coffeehouse")
+});
+
+app.get("/profile", function (req, res) {
+    res.render("user-profile");
+})
+
+app.get("/user/:id", function (req, res) {
+
+    res.render("user")
+})
+
+
+};
