@@ -1,10 +1,11 @@
 #return-button {
-    float: left;
+    float: right;
+    right: 100px;
 }
 
 .textbox {
     border: 4px solid black;
-    width: 25%;
+    width: 63%;
     margin-top: 20px;
 }
 
@@ -24,4 +25,12 @@
 
 .bio {
     margin: 20px;
+}
+
+.col-md-3 {
+    left: 110px;
+}
+
+#dropdownMenuLink {
+    left: 80px;
 }
