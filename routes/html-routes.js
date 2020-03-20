@@ -1,4 +1,5 @@
 var isAuthenticated = require("../config/middleware/isAuthenticated");
+var db = require("../models");
 
 module.exports = function(app) {
 
