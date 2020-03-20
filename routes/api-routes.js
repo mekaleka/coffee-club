@@ -63,36 +63,36 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/api/coffehouse", function (req, res) {
-    db.CoffeeHouse.findAll().then(function(dbCoffeehous) {
-      res.json(dbCoffeHouse);
-    });
-  });
+  // app.get("/api/coffehouse", function (req, res) {
+  //   db.CoffeeHouse.findAll().then(function(dbCoffeehous) {
+  //     res.json(dbCoffeHouse);
+  //   });
+  // });
 
-  
-  app.get("api/coffehouse/:chid", function (req, res) {
+
+  // app.get("api/coffehouse/:chid", function (req, res) {
  
-    db.Reviews.findAll({
-      where: {
-        CoffeeHouseId = req.params.chid
-      }
-    }).then(function(dbReviews) {
-      res.json(dbReviews);
-    })
+  //   db.Reviews.findAll({
+  //     where: {
+  //       CoffeeHouseId = req.params.chid
+  //     }
+  //   }).then(function(dbReviews) {
+  //     res.json(dbReviews);
+  //   })
 
-  })
+  // })
 
-  app.get("api/user/:userid", function (req, res) {
+  // app.get("api/user/:userid", function (req, res) {
  
-    db.Reviews.findAll({
-      where: {
-        UserId = req.params.userid
-      }
-    }).then(function(dbReviews) {
-      res.json(dbReviews);
-    })
+  //   db.Reviews.findAll({
+  //     where: {
+  //       UserId = req.params.userid
+  //     }
+  //   }).then(function(dbReviews) {
+  //     res.json(dbReviews);
+  //   })
 
-  })
+  // })
 
 
 };
