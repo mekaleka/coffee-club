@@ -3,9 +3,10 @@ var db = require("../models");
 
 module.exports = function(app) {
   app.get("/", function(req, res) {
-    res.render("index");
+    db.CoffeeHouse.findAll().then(function(data) {
+    res.render("index", data);
   });
-
+  });
   app.get("/coffeehouse", function(req, res) {
     db.CoffeeHouse.findAll().then(function(data) {
       res.render("coffeehouse", {
