@@ -11,3 +11,16 @@
 
 
 <h3>View recent posts from our top 5 coffee shops</h3>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4" id="list-option" >
+            {{#each data}}
+            <li data-attrid = {{this.id}}>{{this.coffehnousename}}</li>
+            {{/each}}
+        </div>
+        <div class="col-md-8">
+
+        </div>
+    </div>
+</div>
