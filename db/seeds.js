@@ -34,3 +34,49 @@ db.sequelize.sync({ force: true }).then(function() {
     }
   ]);
 });
+
+db.sequelize.sync({ force: true }).then(function() {
+  db.user.bulkCreate([
+    {
+      email: "mocalatte@coffeeworld.com",
+      password: "coffeee1",
+      name: "Coffee Finatic",
+      bio: "I will be a coffee finatic for life. I absolutely love coffee.",
+      favCoffee: "Moca Latte",
+      favcoffeeShop: "No Doze Cafe"
+    },
+    {
+      email: "ilovecoffee@nevergonnasleep.org",
+      password: "c911iipo",
+      name: "Coffee Lover McGillicuddy",
+      bio: "I drink coffee all day and cannot stop. Someone please help me.",
+      favCoffee: "Americano",
+      favcoffeeShop: "Finest Brew"
+    },
+    {
+      email: "getmesomejava@javajoe.com",
+      password: "8675309",
+      name: "Espresso Mac",
+      bio: "I am a coffee connoisseur that enjoys an evening at my local coffee shop. I consider myself as someone who is sophisticated in my coffee drinking ways.",
+      favCoffee: "Espresso",
+      favcoffeeShop: "Java Joe"
+      
+    },
+    {
+      email: "joeschmo@bloggincoffee.com",
+      password: "12oztall",
+      name: "John Doe",
+      bio: "I have always enjoyed an ice cold Cappuccino with caramel.",
+      favCoffee: "Macchiatiato",
+      favcoffeeShop: "Coffee Spot"
+    },
+    {
+      email: "coffeedrinkerallnight@istayupallnight.com",
+      password: "midnightdrinker",
+      name: "Jane Doe",
+      bio: "I stay up all night drinking coffee and then sleep all day.",
+      favCoffee: "Tripple Espresso",
+      favcoffeeShop: "Bloggin Coffee"
+    }
+]);
+});
