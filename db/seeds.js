@@ -80,3 +80,20 @@ db.sequelize.sync({ force: true }).then(function() {
     }
 ]);
 });
+
+db.sequelize.sync({ force: true }).then(function() {
+  db.review.bulkCreate([
+    {
+      comment: "I really enjoy lounging at my favorite coffee shop. Drinking my favorite latte while reading the newspaper. After I call it a night and head home I make a full pot of Black Ivory. At $500 a pound I may as well just go to Vietnam and get it myself.",
+      rating: "5"
+    },
+    {
+      comment: "During lunch I enjoy hanging out here and having a quick cup of joe. I usually am in and out but it works for me.",
+      rating: "3"
+    },
+    {
+      comment: "I am at the 'Coffee Spot' at least 3 or 4 times a week. That is my hang out and I have a lot of friends that join me there for coffee on Wednesdays and Fridays. If it were not for this place I would probably have no life.",
+      rating: "4"
+    }
+]);
+});
