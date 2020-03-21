@@ -1,11 +1,17 @@
 module.exports = function(sequelize, DataTypes) {
   var CoffeeHouse = sequelize.define("CoffeeHouse", {
+    id:{
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+      allowNull: false
+    },
     name: {
       type: DataTypes.STRING,
       allowNull: false
     },
     bio: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: false
     },
     address: {
@@ -22,3 +28,5 @@ module.exports = function(sequelize, DataTypes) {
 
   return CoffeeHouse;
 };
+
+

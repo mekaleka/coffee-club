@@ -63,11 +63,11 @@ module.exports = function(app) {
     });
   });
 
-  // app.get("/api/coffehouse", function (req, res) {
-  //   db.CoffeeHouse.findAll().then(function(dbCoffeehous) {
-  //     res.json(dbCoffeHouse);
-  //   });
-  // });
+  app.get("/api/coffehouse", function (req, res) {
+    db.CoffeeHouse.findAll().then(function(dbCoffeehous) {
+      res.json(dbCoffeHouse);
+    });
+  });
 
 
   // app.get("api/coffehouse/:chid", function (req, res) {
