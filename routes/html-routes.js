@@ -33,15 +33,16 @@ module.exports = function(app) {
 
   app.get("/user/:id", function(req, res) {
     db.Reviews.findAll({
-      where: {
-        UserId: req.params.userid
-      }
-    }).then(function(dbReviews) {
-      const urObject = {
-        userReviews: dbReviews
-      };
-      console.log(urObject);
-      res.render("view-user");
-    });
+        where: {
+          UserId: req.params.userid
+        }
+      }).then(function(dbReviews) {
+
+       const urObject = {
+           userReviews: dbReviews
+       };
+       console.log(urObject);
+       res.render("view-user");
+      })
   });
 };
