@@ -11,3 +11,77 @@
 
 
 <h3>View recent posts from our top 5 coffee shops</h3>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4" id="list-option" >
+            {{#each data}}
+            <li data-attrid = {{this.id}}>{{this.coffehnousename}}</li>
+            {{/each}}
+        </div>
+        <div class="col-md-8">
+
+        </div>
+    </div>
+</div>
+
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">Coffee Club</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+            </button>
+      
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                   <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <div class="dropdown">
+                  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                   Dropdown link
+                  </a>
+                </div>
+              </ul>
+          <form>
+            <div class="form-group row">
+                <label for="inputUsername" class="col-sm-2 col-form-label">Username</label>
+                <div class="col-sm-10">
+                  <input type="username" class="form-control" id="inputUsername">
+                </div>
+            </div>
+            <div class="form-group row">
+              <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+              <div class="col-sm-10">
+                <input type="password" class="form-control" id="inputPassword">
+              </div>
+            </div>
+          </form>
+         
+        </div>
+      </nav>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        <a class="dropdown-item" href="#">Action</a>
+        <a class="dropdown-item" href="#">Another action</a>
+        <a class="dropdown-item" href="#">Something else here</a>
+      
+    </div>
+   
+    <div class="container">
+      <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+          <h1 class="display-4">Coffee Club</h1>
+          <div>
+            <img src="https://images.unsplash.com/photo-1497515114629-f71d768fd07c?ixlib=rb-1.2.1&dpr=1&auto=format&fit=crop&w=416&h=312&q=60" alt="Coffee" class="img-thumbnail">
+          </div>
+        </div>
+    
+      </div>
+    </div>
+    <div class="container">
+
+
+
+    </div>
+

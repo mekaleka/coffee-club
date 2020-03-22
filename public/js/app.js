@@ -1,56 +1,41 @@
 $(function() {
-    $(".devour-burger").on("click", function(event) {
-        var id = $(this).data("id");
-
-        var newDevouredState = {
-            devoured: true
-        };
-
-        // Send the PUT request.
-        $.ajax("/api/burgers/" + id, {
-            type: "PUT",
-            data: newDevouredState
-        }).then(
-            function() {
-                // Reload the page to get the updated list
-                location.reload();
-            }
-        );
+    $.ajax("/api/coffeehouse/", {
+        type: "GET",
+    }).then(function(beans) {
+        console.log(beans);
+        console.log("");
+        for (let i = 0; i < beans.length; i++) {
+            $("#list-option").append(
+                `<div class = "coffeename" data-id = "${beans[i].id}>${beans[i].coffeeHouseName}</div>`
+            );
+        }
     });
+});
 
-    $(".create-burger").on("submit", function(event) {
-        // Make sure to preventDefault on a submit event.
-        event.preventDefault();
-
-        var newBurger = {
-            burger_name: $("#bgr").val().trim(),
-        };
-
-        // Send the POST request.
-        $.ajax("/api/burgers", {
-            type: "POST",
-            data: newBurger
-        }).then(
-            function() {
-                console.log("created new burger");
-                // Reload the page to get the updated list
-                location.reload();
-            }
-        );
+$(function() {
+    $.ajax("/api/user-profile/", {
+        type: "GET"
+    }).then(function(users) {
+        console.log(users);
+        console.log("");
+        for (let i = 0; i < users.length; i++) {
+            $("#list-option").append(
+                `<div class = "username" data-id = "${users[i].id}>${users[i].userProfileName}</div>`
+            );
+        }
     });
+});
 
-    $(".delete-burger").on("click", function(event) {
-        var id = $(this).data("id");
-
-        // Send the DELETE request.
-        $.ajax("/api/burgers/" + id, {
-            type: "DELETE"
-        }).then(
-            function() {
-                // console.log("deleted burger", id);
-                // Reload the page to get the updated list
-                location.reload();
-            }
-        );
+$(function() {
+    $.ajax("/api/view-user/", {
+        type: "GET"
+    }).then(function(toView) {
+        console.log(toView);
+        console.log("");
+        for (let i = 0; i < toView.length; i++) {
+            $("#list-option").append(
+                `<div class = "viewname" data-id = "${toView[i].id}>${toView[i].viewUserName}</div>`
+            );
+        }
     });
 });
