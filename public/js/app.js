@@ -1,6 +1,6 @@
 $(function() {
-  $.ajax("/api/coffeehouse/" + id, {
-    type: "GET"
+  $.ajax("/api/coffeehouse/", {
+    type: "GET",
   }).then(function(beans) {
     console.log(beans);
     console.log("");
