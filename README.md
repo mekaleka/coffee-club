@@ -11,7 +11,7 @@ Users will also be able to access profiles based on their inputs(what they are l
 
 [Heroku Link]()
 
-[Slices](https://docs.google.com/presentation/d/11zJTapef0P4PpyY8Y4jpK-PYnEyIGVGSDy4VtCHwYQ4/edit?usp=sharing)
+[Slides](https://docs.google.com/presentation/d/11zJTapef0P4PpyY8Y4jpK-PYnEyIGVGSDy4VtCHwYQ4/edit?usp=sharing)
 
 ## Creators of this APP
 - Dominic Xu
