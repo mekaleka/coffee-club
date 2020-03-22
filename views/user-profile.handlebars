@@ -15,3 +15,108 @@
 
 
 <h3>Favorite Coffee House</h3>
+<header>
+    <!--added bootstrap navbar-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand navbar1">
+                <!--I added my name with a my-name class for css styling-->
+
+                <strong class="my-name">Coffee House</strong>
+            </a>
+            <!--added the links to the navbar buttons About, Portfolio and Contact-->
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            <strong>Homepage</strong>
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown"></li>
+                    <li class="nav-item">
+                        <a class="nav-link spacing" href="portfolio.html">
+                            <strong>Coffee House</strong>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<main>
+    <!--added a my-container class-->
+    <div class="container my-container-about">
+        <!--Created the proper rows and columns for About Me-->
+        <div class="row d-flex justify-content-center" id="profilebox">
+            <h1>{{data.name}}</h1>
+            <input type="button" class="btn btn-lg btn-success" onclick="goToHome()" value="Home" />
+        </div>
+    </div>
+    <!--added a thematic break for light asthetics and spacing-->
+    <hr>
+    <!--Created the rows and columns for profile image and the About Me text-->
+    <div class="row">
+        <div class="col-md-3">
+            <img src="{{userdata.imgURL}}" class="profile-img img-fluid mt-4 responsive image" alt="profile image">
+            <div class="textbox">
+                <p>The coffee</p>
+                <p>The coffee house</p>
+            </div>
+
+        </div>
+        <div class="col-md-9">
+            <!--*change LI to my About Me*-->
+            <p class="bio">
+                {{userdata.bio}}
+            </p>
+        </div>
+        <div>
+            <p>Favorite coffee:{{userdata.favCoffee}}</p>
+            <p>Favorite coffee shop:{{userdata.favCoffeeShop}}</p>
+        </div>
+        <select id="coffeeshop">
+            {{each coffeehouse}}
+            <option value="{{this.id}}">{{this.name}}</option>
+            {{/each}}
+        </select>
+        <textarea id="textarea" rows="3" cols="50">
+            
+        </textarea>
+        <button id="btn">
+            save review
+        </button>
+    </div>
+    <div class="row">
+        <div class="textbox2">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci numquam illum quaerat incidunt, ea id
+                reiciendis rem odio ullam repellendus aspernatur eius fuga nobis facilis dicta qui beatae accusamus
+                ipsa. Aspernatur, necessitatibus,
+                praesentium quod corrupti iure eum ea modi inventore voluptatum voluptate dolore accusamus nemo deleniti
+                tempore iusto fugiat similique, dolorum mollitia quis id minima ipsa nam suscipit excepturi. Saepe? Ipsa
+                illum accusantium officiis
+                aperiam ut animi dignissimos ipsam a beatae atque. Quisquam voluptatem voluptas placeat, commodi
+                perferendis earum natus modi neque? Quod excepturi suscipit eligendi? Laborum saepe amet accusamus.</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="textbox3">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci numquam illum quaerat incidunt, ea id
+                reiciendis rem odio ullam repellendus aspernatur eius fuga nobis facilis dicta qui beatae accusamus
+                ipsa. Aspernatur, necessitatibus,
+                praesentium quod corrupti iure eum ea modi inventore voluptatum voluptate dolore accusamus nemo deleniti
+                tempore iusto fugiat similique, dolorum mollitia quis id minima ipsa nam suscipit excepturi. Saepe? Ipsa
+                illum accusantium officiis
+                aperiam ut animi dignissimos ipsam a beatae atque. Quisquam voluptatem voluptas placeat, commodi
+                perferendis earum natus modi neque? Quod excepturi suscipit eligendi? Laborum saepe amet accusamus.</p>
+        </div>
+    </div>
+
+</main>
+<!--added a bootstrap sticky footer with an additional class for css styling-->
+<footer class="footer mt-auto py-3">
+    <div class="container">
+        <span class="text-muted">Copyright ©</span>
+    </div>
+</footer>
