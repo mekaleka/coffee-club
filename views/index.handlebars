@@ -35,7 +35,10 @@
           <input type="password" class="form-control" id="inputPassword">
         </div>
       </div>
-      <button class="btn btn-primary">Sign In</button>
+      <button class="btn btn-primary">Log In</button>
+      <button class="btn btn-primary">Sign Up</button>
+      
+      
     </form>
 
   </div>
@@ -74,11 +77,16 @@
       url: "/api/login",
       data: user
     }).then(function (data) {
-      location.reload();
+      location.href = `profile/${data.id}/`;
     }).catch(function (err) {
       // user entered in the wrong information
       // TODO - inform the user of what went wrong
-      console.log(err);
+      alert("Email does not exsist");
     })
+     
+  
   })
+
+
+ 
 </script>
