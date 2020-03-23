@@ -9,7 +9,7 @@ Users will also be able to access profiles based on their inputs(what they are l
 ## Links:
 [GitHub Link](https://mekaleka.github.io/coffee-club/)
 
-[Heroku Link]()
+[Heroku Link](https://fathomless-gorge-36996.herokuapp.com/)
 
 [Slides](https://docs.google.com/presentation/d/11zJTapef0P4PpyY8Y4jpK-PYnEyIGVGSDy4VtCHwYQ4/edit?usp=sharing)
 
