@@ -9,8 +9,9 @@ module.exports = function(app) {
   });
   app.get("/coffeehouse", function(req, res) {
     db.CoffeeHouse.findAll().then(function(data) {
+      console.log(data);
       res.render("coffeehouse", {
-        coffeehouse: data.map(item => item.toJSON())
+        coffeehouse: data
       });
     });
   });

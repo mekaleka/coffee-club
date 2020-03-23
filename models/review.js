@@ -1,5 +1,10 @@
 module.exports = function(sequelize, DataTypes) {
   var Review = sequelize.define("Review", {
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true
+    },
     comment: {
       type: DataTypes.STRING,
       allowNull: false
@@ -10,19 +15,18 @@ module.exports = function(sequelize, DataTypes) {
     }
   });
 
-  Review.associate = function(models) {
-    Review.belongsTo(models.User, {
-      foreignKey: {
-        allowNull: false
-      }
-    });
-
-    Review.belongsTo(models.CoffeeHouse, {
-      foreignKey: {
-        alllowNull: false
-      }
-    });
-  };
-
+  // Review.associate = function(models) {
+    //   Review.belongsTo(models.User, {
+      //     foreignKey: {
+        //       allowNull: false
+        //     }
+        //   });
+        
+        //   Review.belongsTo(models.CoffeeHouse, {
+          //     foreignKey: {
+            //       alllowNull: false
+  //     }
+  //   });
+  
   return Review;
 };
