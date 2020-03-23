@@ -70,22 +70,11 @@ module.exports = function(app) {
         });
     });
 
-<<<<<<< HEAD
-    // app.get("/api/coffehouse", function (req, res) {
-    //   db.CoffeeHouse.findAll().then(function(dbCoffeehous) {
-    //     res.json(dbCoffeHouse);
-    //   });
-    // });
-
-
-    // app.get("api/coffehouse/:chid", function (req, res) {
-=======
   app.get("/api/coffehouse", function (req, res) {
     db.CoffeeHouse.findAll().then(function(dbCoffeehous) {
       res.json(dbCoffeHouse);
     });
   });
->>>>>>> 8c4c99f9ff72f2b755032f76a27bbcfb39cd993e
 
     //   db.Reviews.findAll({
     //     where: {
