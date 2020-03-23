@@ -32,25 +32,23 @@
     <!--Created the proper rows and columns for About Me-->
     <div class="row d-flex justify-content-center" id="profilebox">
         <h1>{{name}}</h1>
-        <input type="button" class="btn btn-lg btn-success" onclick="goToHome()" value="Home" />
+        
     </div>
 
     <!--added a thematic break for light asthetics and spacing-->
     <hr>
     <!--Created the rows and columns for profile image and the About Me text-->
-    <div class="container">
-        <h1>Check Json objects</h1>
-   
+    {{!-- <div class="container">
         <p>
       {{user.dataValues.email}}
       {{User.dataValues}}
       {{user.dataValues.bio}}</p>
       {{user.dataValues.name}}
-    </div>
+    </div> --}}
 
     <div class="row">
         <div class="col-md-3">
-            <img src="{{#if imgURL}}{{imgURL}}{{else}}http://placehold.it/200x200{{/if}}"
+            <img src="{{#if imgURL}}{{imgURL}}{{else}}http://www.thestoryof.org/wp-content/uploads/2016/09/profile-placeholder.jpg{{/if}}"
                 class="profile-img img-fluid mt-4 responsive image" alt="profile image">
 
         </div>
