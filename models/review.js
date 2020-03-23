@@ -16,10 +16,9 @@ module.exports = function(sequelize, DataTypes) {
         allowNull: false
       }
     });
-
     Review.belongsTo(models.CoffeeHouse, {
       foreignKey: {
-        alllowNull: false
+        allowNull: false
       }
     });
   };

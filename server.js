@@ -1,5 +1,6 @@
 var express = require("express");
 var session = require("express-session");
+var logger = require("morgan");
 // Requiring passport as we've configured it
 var passport = require("./config/passport");
 var PORT = process.env.PORT || 8080;
@@ -9,6 +10,7 @@ var app = express();
 
 // Serve static content for the app from the "public" directory in the application directory.
 app.use(express.static("public"));
+app.use(logger("dev"));
 
 // Parse application body as JSON
 app.use(express.urlencoded({ extended: true }));

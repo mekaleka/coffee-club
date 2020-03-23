@@ -1,5 +1,6 @@
 // Requiring our models and passport as we've configured it
 var db = require("../models");
+var isAuthenticated = require("../config/middleware/isAuthenticated");
 var passport = require("../config/passport");
 
 module.exports = function(app) {
@@ -51,48 +52,24 @@ module.exports = function(app) {
     }
   });
 
-  app.post("/api/review", function(req, res) {
-    console.log(req.body);
+  app.post("/api/review", isAuthenticated, function(req, res) {
     db.Review.create({
       comment: req.body.comment,
       rating: req.body.rating,
       CoffeeHouseId: req.body.CoffeeHouseId,
-      UserId: req.body.UserId
-    }).then(newReview => {
-      res.json(newReview);
-    });
+      UserId: req.user.id
+    })
+      .then(newReview => {
+        res.json(newReview);
+      })
+      .catch(function(err) {
+        console.log(err);
+      });
   });
 
-  // app.get("/api/coffehouse", function (req, res) {
-  //   db.CoffeeHouse.findAll().then(function(dbCoffeehous) {
-  //     res.json(dbCoffeHouse);
-  //   });
-  // });
-
-
-  // app.get("api/coffehouse/:chid", function (req, res) {
- 
-  //   db.Reviews.findAll({
-  //     where: {
-  //       CoffeeHouseId = req.params.chid
-  //     }
-  //   }).then(function(dbReviews) {
-  //     res.json(dbReviews);
-  //   })
-
-  // })
-
-  // app.get("api/user/:userid", function (req, res) {
- 
-  //   db.Reviews.findAll({
-  //     where: {
-  //       UserId = req.params.userid
-  //     }
-  //   }).then(function(dbReviews) {
-  //     res.json(dbReviews);
-  //   })
-
-  // })
-
-
+  app.get("/api/coffehouse", function(req, res) {
+    db.CoffeeHouse.findAll().then(function(dbCoffeehous) {
+      res.json(dbCoffeHouse);
+    });
+  });
 };
