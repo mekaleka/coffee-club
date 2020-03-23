@@ -1,50 +1,78 @@
-{{!-- <h1>Your Preferred Coffee House &#9749</h1>
-
-<h2>About Our Community &#127751;</h2>
-
-<h2>Top Posts and Ratings &#11088;</h2> --}}
-
-{{#each coffeehouse}}
-
-<h4>Name: {{this.name}}</h1>
-<h6>Bio: {{this.bio}}</h1>
-<h4>Address: {{this.address}}</h1>
-
-
-{{!-- <h2>Top Posts and Ratings &#11088;</h2> --}}
-
-   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Coffee Club</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Coffee Club</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
-    </button>
-    
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-            </li>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Dropdown link
+          </button>
+          <div class="dropdown-menu" aria-labelledby="coffeeshops">
+            {{#each coffeeshops}}
+            <a class="dropdown-item" href="/shop/{{id}}">{{{name}}}</a>
+            {{/each}}
+          </div>
         </div>
-      </nav>
+      </li>
+  </div>
+</nav>
 <div class="container">
-    <div class="row">
-        <div class="col">
-      <img src="http://placehold.it/400x200" alt="placehold">
-    </div>
-    <div class="col">
-        <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas quidem molestiae nulla ad sunt maxime beatae quia culpa enim et a facere doloribus, error facilis eos quis ut fugit sapiente.</p>
-    </div>
-</div>
-<div class="col">
-<P>Average Rating: 4 </P>
+  <div class="row">
+    <h4>Name: {{{name}}}</h4>
+    <h6>Bio: {{bio}}</h6>
+    <h4>Address: {{address}}</h4>
+  </div>
 
-</div>
 </div>
 
 <div class="container">
-{{this}}
-
+  <div>
+    <h3>
+      Add a Review
+    </h3>
+    <form id="add-review">
+      <div class="form-group">
+        <textarea class="form-control" id="review" rows="3"></textarea>
+      </div>
+      <button class="btn btn-primary">Add Review</button>
+    </form>
+  </div>
+  <div class="reviews">
+    {{#each Reviews}}
+    <h2>{{comment}}</h2>
+    <h3>{{rating}}</h3>
+    {{/each}}
+  </div>
 </div>
-{{/each}}
 
-{{!-- <div id="container"></div> --}}
+<script>
+  $("#add-review").on("submit", function (e) {
+    e.preventDefault();
+    var review = {
+      comment: $("#review").val().trim(),
+      rating: 3,
+      CoffeeHouseId: {{id}}
+    };
+
+    $.ajax({
+      method: "POST",
+      url: "/api/review",
+      data: review
+    }).then(function (res) {
+      location.reload();
+    }).catch(function (err) {
+      // something went wrong.
+      // handle it
+      console.log(err);
+    })
+  })
+</script>
