@@ -37,13 +37,21 @@
     <!--added a thematic break for light asthetics and spacing-->
     <hr>
     <!--Created the rows and columns for profile image and the About Me text-->
+    {{!-- <div class="container">
+        <p>
+      {{user.dataValues.email}}
+      {{User.dataValues}}
+      {{user.dataValues.bio}}</p>
+      {{user.dataValues.name}}
+    </div> --}}
+
     <div class="row">
-        <div class="col-md-3">
-            <img src="{{#if imgURL}}{{imgURL}}{{else}}http://placehold.it/200x200{{/if}}"
+        <div class="col-md-2">
+            <img src="{{#if imgURL}}{{imgURL}}{{else}}http://www.thestoryof.org/wp-content/uploads/2016/09/profile-placeholder.jpg{{/if}}"
                 class="profile-img img-fluid mt-4 responsive image" alt="profile image">
 
         </div>
-        <div class="col-md-9">
+        <div class="col-md-10">
             <!--*change LI to my About Me*-->
             <p class="bio">
                 {{bio}}

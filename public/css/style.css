@@ -34,7 +34,11 @@
 #dropdownMenuLink {
     left: 80px;
 }
+
 body {
     background-color: rgb(165, 116, 42);
 }
 
+.profile-img {
+    left: 120px;
+}
