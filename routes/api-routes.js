@@ -39,23 +39,23 @@ module.exports = function(app) {
     // Route for getting some data about our user to be used client side
     app.get("/api/user_data", function(req, res) {
 
-        // db.User.find({email:req.user.email}).then(function(data){
-        // db.Coffeehouse.find({}).then(function(coffee){
-        // res.render("user-profile",{userdata:data,coffeehouse:cofee)
+        // db.User.find({ id: 2 }).then(function(data) {
+        //     // db.Coffeehouse.find({}).then(function(coffee){
+        //     res.render("user-profile", { userdata: data })
         // })
-        //  
+
         // })
-        if (!req.user) {
-            // The user is not logged in, send back an empty object
-            res.json({});
-        } else {
-            // Otherwise send back the user's email and id
-            // Sending back a password, even a hashed password, isn't a good idea
-            res.json({
-                email: req.user.email,
-                id: req.user.id
-            });
-        }
+        // if (!req.user) {
+        //     // The user is not logged in, send back an empty object
+        //     res.json({});
+        // } else {
+        //     // Otherwise send back the user's email and id
+        //     // Sending back a password, even a hashed password, isn't a good idea
+        //     res.json({
+        //         email: req.user.email,
+        //         id: req.user.id
+        //     });
+        // }
     });
 
     app.post("/api/review", function(req, res) {
@@ -70,11 +70,11 @@ module.exports = function(app) {
         });
     });
 
-  app.get("/api/coffehouse", function (req, res) {
-    db.CoffeeHouse.findAll().then(function(dbCoffeehous) {
-      res.json(dbCoffeHouse);
+    app.get("/api/coffehouse", function(req, res) {
+        db.CoffeeHouse.findAll().then(function(dbCoffeehous) {
+            res.json(dbCoffeHouse);
+        });
     });
-  });
 
     //   db.Reviews.findAll({
     //     where: {

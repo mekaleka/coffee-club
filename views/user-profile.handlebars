@@ -50,16 +50,27 @@
     <div class="container my-container-about">
         <!--Created the proper rows and columns for About Me-->
         <div class="row d-flex justify-content-center" id="profilebox">
-            <h1>{{data.name}}</h1>
+            <h1>{{user}}</h1>
+          
             <input type="button" class="btn btn-lg btn-success" onclick="goToHome()" value="Home" />
         </div>
     </div>
     <!--added a thematic break for light asthetics and spacing-->
     <hr>
     <!--Created the rows and columns for profile image and the About Me text-->
+    <div class="container">
+        <h1>Check Json objects</h1>
+   
+        <p>
+      {{user.dataValues.email}}
+      {{User.dataValues}}
+      {{user.dataValues.bio}}</p>
+      {{user.dataValues.name}}
+    </div>
+
     <div class="row">
         <div class="col-md-3">
-            <img src="{{userdata.imgURL}}" class="profile-img img-fluid mt-4 responsive image" alt="profile image">
+            <img src="{{user.dataValues.imgURL}}" class="profile-img img-fluid mt-4 responsive image" alt="profile image">
             <div class="textbox">
                 <p>The coffee</p>
                 <p>The coffee house</p>
@@ -69,15 +80,15 @@
         <div class="col-md-9">
             <!--*change LI to my About Me*-->
             <p class="bio">
-                {{userdata.bio}}
+                 {{user.dataValues.bio}}
             </p>
         </div>
-        <div>
+        <div class="container">
             <p>Favorite coffee:{{userdata.favCoffee}}</p>
             <p>Favorite coffee shop:{{userdata.favCoffeeShop}}</p>
         </div>
         <select id="coffeeshop">
-            {{each coffeehouse}}
+            {{#each coffeehouse}}
             <option value="{{this.id}}">{{this.name}}</option>
             {{/each}}
         </select>
