@@ -2,9 +2,17 @@
 
 <div class="container">
   <div class="row">
-    <h4>Name: {{{name}}}</h4>
-    <h6>Bio: {{bio}}</h6>
-    <h4>Address: {{address}}</h4>
+      <div class="col-md-3">
+          Image
+      </div>
+      <div class="col-md-9">
+          <h1>{{{name}}}</h1>
+          <p>Bio: {{bio}}</p>
+          <div class="alert alert-primary">
+              <strong>Address:</strong> <br>{{address}}
+          </div>
+      </div>
+
   </div>
 
 </div>
@@ -32,17 +40,27 @@
   </div>
     {{/if}}
     {{#unless user}}
-        <button>register/signup</button>
+      <div class="alert alert-warning">
+          <h3>Want to leave a comment?</h3>
+          <p>Sign in on top or <a href="/signup" class="btn btn-sm btn-info">register</a></p>
+
+      </div>
+
     {{/unless}}
 
   <div class="reviews">
     {{#each Reviews}}
     <div class="card mt-2">
         <div class="card-body">
-            <h2>{{comment}}</h2>
+            <p>{{comment}}</p>
             <div class="rating" data-data="{{rating}}">
             </div>
-            <a href="/profile/{{UserId}}" class="user-link" data-data="{{UserId}}">Anonymous</a>
+            {{#if user}}
+                <a href="/profile/{{UserId}}" class="user-link" data-data="{{UserId}}">Anonymous</a>
+            {{/if}}
+            {{#unless user}}
+                <a href="/signup" class="user-link" data-data="{{UserId}}">Anonymous</a>
+            {{/unless}}
         </div>
     </div>
 
@@ -86,9 +104,9 @@
       console.log('star: '+rating);
       for(let i = 0; i< 5; i++){
           if(Number(rating)>i){
-              $(this).html($(this).html()+'<i class="fa fa-star fa-2x"></i>');
+              $(this).html($(this).html()+'<i class="fa fa-star"></i>');
           } else {
-              $(this).html($(this).html()+'<i class="fa fa-star-o fa-2x"></i>');
+              $(this).html($(this).html()+'<i class="fa fa-star-o"></i>');
           }
 
           console.log('star: '+rating)

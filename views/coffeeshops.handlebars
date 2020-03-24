@@ -1,8 +1,17 @@
-<div class="container">
-  {{#each coffeeshops}}
-  <div>
-    <h1>{{{name}}}</h1>
-    <a href="/shop/{{id}}">Check it out</a>
-  </div>
-  {{/each}}
+<div class="container-fluid">
+    <div class="row">
+        {{#each coffeeshops}}
+            <div class="col-3 mt-3">
+                <div class="card bg-secondary">
+                    <div class="card-body text-white">
+                        <h3 class="card-title ">{{{name}}}</h3>
+                        <div class="card-text ">
+                            {{address}} <br>
+                            <a href="/shop/{{id}}" class="text-black-50">Check it out</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {{/each}}
+    </div>
 </div>
