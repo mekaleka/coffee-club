@@ -36,6 +36,7 @@ module.exports = function(app) {
                 },
                 include: [db.Review]
             }).then(function(dbCoffeHouse) {
+                dbCoffeHouse.Reviews = dbCoffeHouse.Reviews.reverse();
                 res.render("coffeehouse", {
                     ...dbCoffeHouse.toJSON(),
                     coffeeshops: dbCoffeeHouses.map(shop => shop.toJSON()),
@@ -52,11 +53,22 @@ module.exports = function(app) {
                     id: req.params.id
                 }
             }).then(function(dbUser) {
-                res.render("user-profile", {
-                    profile: dbUser.toJSON(),
-                    user: req.user,
-                    coffeeshops: dbCoffeeHouses.map(shop => shop.toJSON())
-                });
+                db.Review.findAll({
+                    where:{
+                        UserId: req.params.id
+                    }
+                }).then(function(reviews){
+
+
+                    res.render("user-profile", {
+                        profile: dbUser.toJSON(),
+                        user: req.user,
+                        Reviews:reviews.map(review => review.toJSON()),
+                        coffeeshops: dbCoffeeHouses.map(shop => shop.toJSON())
+                    });
+
+                })
+
             });
         })
 
