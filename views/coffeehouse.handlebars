@@ -1,30 +1,5 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Coffee Club</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item active">
-        <div class="dropdown">
-          <button class="btn btn-secondary dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
-            Dropdown link
-          </button>
-          <div class="dropdown-menu" aria-labelledby="coffeeshops">
-            {{#each coffeeshops}}
-            <a class="dropdown-item" href="/shop/{{id}}">{{{name}}}</a>
-            {{/each}}
-          </div>
-        </div>
-      </li>
-  </div>
-</nav>
+
 <div class="container">
   <div class="row">
     <h4>Name: {{{name}}}</h4>
@@ -35,6 +10,7 @@
 </div>
 
 <div class="container">
+    {{#if user}}
   <div>
     <h3>
       Add a Review
@@ -42,24 +18,89 @@
     <form id="add-review">
       <div class="form-group">
         <textarea class="form-control" id="review" rows="3"></textarea>
+          <select name="rating" id="rating">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+          </select>
       </div>
+
       <button class="btn btn-primary">Add Review</button>
     </form>
   </div>
+    {{/if}}
+    {{#unless user}}
+        <button>register/signup</button>
+    {{/unless}}
+
   <div class="reviews">
     {{#each Reviews}}
-    <h2>{{comment}}</h2>
-    <h3>{{rating}}</h3>
+    <div class="card mt-2">
+        <div class="card-body">
+            <h2>{{comment}}</h2>
+            <div class="rating" data-data="{{rating}}">
+            </div>
+            <a href="/profile/{{UserId}}" class="user-link" data-data="{{UserId}}">Anonymous</a>
+        </div>
+    </div>
+
     {{/each}}
   </div>
 </div>
 
 <script>
+    let knownUsers = {};
+    async function getUser(id){
+        let loggedIn = false;
+        {{#if user}}
+        loggedIn = true;
+        {{/if}}
+        if(loggedIn){
+            if(typeof knownUsers['u_'+id] === 'undefined'){
+                knownUsers['u_'+id] = await $.ajax({
+                    method:'GET',
+                    url:'/api/user-profile/'+id
+                });
+                return knownUsers['u_'+id];
+            } else {
+                return knownUsers['u_'+id];
+            }
+
+        } else {
+            return {
+                name: 'Anonymous'
+            }
+        }
+    }
+    $('.user-link').each(function () {
+        getUser($(this).data('data')).then((user)=>{
+            console.log(user);
+            $(this).html(user.name);
+        })
+
+    });
+  $('.rating').each(function(){
+      let rating = $(this).data('data');
+      console.log('star: '+rating);
+      for(let i = 0; i< 5; i++){
+          if(Number(rating)>i){
+              $(this).html($(this).html()+'<i class="fa fa-star fa-2x"></i>');
+          } else {
+              $(this).html($(this).html()+'<i class="fa fa-star-o fa-2x"></i>');
+          }
+
+          console.log('star: '+rating)
+      }
+
+  });
+
   $("#add-review").on("submit", function (e) {
     e.preventDefault();
     var review = {
       comment: $("#review").val().trim(),
-      rating: 3,
+      rating: $('#rating').val(),
       CoffeeHouseId: {{id}}
     };
 
@@ -76,3 +117,4 @@
     })
   })
 </script>
+         
