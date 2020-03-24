@@ -32,7 +32,7 @@ module.exports = function(app) {
     });
 
     // Route for logging user out
-    app.get("/logout", function(req, res) {
+    app.get("/api/logout", function(req, res) {
         req.logout();
         res.redirect("/");
     });
@@ -52,7 +52,20 @@ module.exports = function(app) {
         }
     });
 
-    app.post("/api/review", isAuthenticated, function(req, res) {
+    app.get('/api/user-profile/:id', function(req, res){
+        db.User.findOne({
+            where:{
+                id: req.params.id
+            }
+        }).then(function (user) {
+            res.json({
+                name:user.name,
+                id:user.id
+            })
+        })
+    });
+
+     app.post("/api/review", isAuthenticated, function(req, res) {
         db.Review.create({
                 comment: req.body.comment,
                 rating: req.body.rating,
