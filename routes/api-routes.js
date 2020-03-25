@@ -80,11 +80,20 @@ module.exports = function(app) {
             });
     });
 
-    app.get("/api/coffehouse", function(req, res) {
-        db.CoffeeHouse.findAll().then(function(dbCoffeehous) {
-            res.json(dbCoffeHouse);
+    
+    app.get("/api/coffeehouse/:id", function(req, res) {
+        db.CoffeeHouse.findOne({
+            where:{
+                id: req.params.id
+            }
+        }).then(function(coffeeHouse) {
+            res.json(coffeeHouse);
         });
     });
+
+
+
+    
 
     //   db.Reviews.findAll({
     //     where: {

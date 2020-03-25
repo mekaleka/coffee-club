@@ -36,7 +36,7 @@
                     <h2>{{comment}}</h2>
                     <div class="rating" data-data="{{rating}}">
                     </div>
-                    <a href="/profile/{{UserId}}" class="user-link" data-data="{{UserId}}">Anonymous</a>
+                    <a href="/shop/{{CoffeeHouseId}}" class="coffeeHouse-link" data-data="{{CoffeeHouseId}}"></a>
                 </div>
             </div>
         {{/each}}
@@ -50,33 +50,15 @@
     </div>
 </footer>
 <script>
-    let knownUsers = {};
-    async function getUser(id){
-        let loggedIn = false;
-        {{#if user}}
-            loggedIn = true;
-        {{/if}}
-        if(loggedIn){
-            if(typeof knownUsers['u_'+id] === 'undefined'){
-                knownUsers['u_'+id] = await $.ajax({
-                    method:'GET',
-                    url:'/api/user-profile/'+id
-                });
-                return knownUsers['u_'+id];
-            } else {
-                return knownUsers['u_'+id];
-            }
 
-        } else {
-            return {
-                name: 'Anonymous'
-            }
-        }
-    }
-    $('.user-link').each(function () {
-        getUser($(this).data('data')).then((user)=>{
-            console.log(user);
-            $(this).html(user.name);
+   let targetElement = {};
+    $('.coffeeHouse-link').each(function (index) {
+        targetElement['s_'+index] = $(this);
+        $.ajax({
+            method: 'GET',
+            url: '/api/coffeehouse/'+$(this).data('data')
+        }).then(function(ch){
+            targetElement['s_'+index].html(ch.name);
         })
 
     });
@@ -94,5 +76,6 @@
         }
 
     });
+
 </script>
          
