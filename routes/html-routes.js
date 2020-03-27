@@ -58,7 +58,7 @@ module.exports = function(app) {
                         UserId: req.params.id
                     }
                 }).then(function(reviews){
-
+                    reviews = reviews.reverse();
 
                     res.render("user-profile", {
                         profile: dbUser.toJSON(),
